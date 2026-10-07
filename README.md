@@ -13,7 +13,7 @@ agb.html              AGB (Platzhalter – ausfüllen!)
 404.html              Fehlerseite
 assets/css/styles.css Styles
 assets/js/main.js     Animationen, Menü, FAQ, Formular
-assets/img/           Logo, Siegel, Kundenlogos, Favicon
+assets/img/           Bilder mit SEO-Dateinamen (z. B. google-ads-fallbeispiel-…, ga-academy-google-ads-coaching-…, referenz-logo-…)
 robots.txt, sitemap.xml
 .nojekyll             verhindert Jekyll-Verarbeitung auf GitHub Pages
 ```
@@ -38,8 +38,9 @@ robots.txt, sitemap.xml
 
 - **Formular:** Kostenlos bei [formspree.io](https://formspree.io) ein Formular anlegen und in `index.html` `DEINE-FORM-ID` ersetzen. Bis dahin zeigt das Formular einen Hinweis statt zu senden.
 - **Impressum, Datenschutz, AGB** mit echten Inhalten füllen.
-- **Platzhalter in `index.html`** (Suche nach `[`): Vimeo-IDs, Zoom-Screenshots, Enterprise-Budgetschwelle, FAQ zu Laufzeit/Budgetlimit und Ergebniszeitraum.
+- **Platzhalter in `index.html`** (Suche nach `[`): Vimeo-ID für das Intro-Video, Enterprise-Budgetschwelle, FAQ zu Laufzeit/Budgetlimit und Ergebniszeitraum.
 - **Videos (Vimeo):** Bei jedem Video-Platzhalter in `index.html` die Vimeo-ID in `data-vimeo-id=""` eintragen (die Zahl aus `vimeo.com/123456789`). Optional ein eigenes Vorschaubild über `data-poster="assets/img/…"` angeben. Die Videos werden erst beim Klick geladen (schnelle Ladezeit, „Do not track“). In Vimeo pro Video „Von Vimeo ausblenden“ und als Einbettung nur die eigene Domain erlauben.
+- **Neue Bilder:** Dateinamen klein, mit Bindestrichen und beschreibend wählen (z. B. `google-ads-fallbeispiel-kundenname-website.webp`) und im `<img>` immer ein aussagekräftiges `alt` setzen.
 - **Bilder einfügen:** Dateien nach `assets/img/` (bzw. `assets/video/`) legen und den jeweiligen Platzhalter-`<div>` durch `<img>` bzw. `<video>` ersetzen.
 - **Datenschutz-Tipp:** Google Fonts lassen sich lokal einbinden (z. B. mit google-webfonts-helper), dann entfällt die Datenübertragung an Google.
 

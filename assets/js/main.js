@@ -124,7 +124,7 @@
   var lb = document.getElementById('lightbox'), lbPlayer = document.getElementById('lightbox-player'), lbClose = document.getElementById('lightbox-close'), lastFocus = null;
   function closeLb() {
     if (!lb || lb.hidden) return;
-    lb.hidden = true; lbPlayer.innerHTML = ''; document.body.style.overflow = '';
+    lb.hidden = true; lbPlayer.innerHTML = ''; lb.classList.remove('is-image'); document.body.style.overflow = '';
     if (lastFocus) lastFocus.focus();
   }
   if (lb) {
@@ -193,6 +193,22 @@
   termBtns.forEach(function (b) { b.addEventListener('click', function () { setTerm(b.getAttribute('data-term')); }); });
   if (termBtns.length) setTerm('12');
 
+
+  /* Academy-Screenshots in groß anzeigen */
+  document.querySelectorAll('.shot').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      if (!lb) return;
+      lastFocus = btn;
+      lbPlayer.innerHTML = '';
+      var img = document.createElement('img');
+      img.src = btn.getAttribute('data-full'); img.alt = btn.querySelector('img').alt;
+      img.className = 'lb-img';
+      lbPlayer.appendChild(img);
+      lb.classList.add('is-image');
+      lb.hidden = false; document.body.style.overflow = 'hidden'; lbClose.focus();
+    });
+  });
+
   /* Plan-Buttons wählen Plan im Formular vor */
   var sel = document.getElementById('plan-select');
   document.querySelectorAll('[data-plan]').forEach(function (a) {
@@ -209,23 +225,23 @@
     form.addEventListener('submit', function (e) {
       if (form.action.indexOf('DEINE-FORM-ID') !== -1) {
         e.preventDefault();
-        msg.style.color = '#f5c451';
+        msg.style.color = '#9A6700';
         msg.textContent = 'Formular noch nicht verbunden – bitte Formspree-ID in index.html eintragen.';
         return;
       }
       e.preventDefault();
-      msg.style.color = '#b4b4c3';
+      msg.style.color = '#5F5F5F';
       msg.textContent = 'Wird gesendet …';
       fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
         .then(function (r) {
           if (!r.ok) throw new Error();
           form.reset();
-          msg.style.color = '#3ddc97';
+          msg.style.color = '#087A46';
           msg.textContent = 'Danke! Wir melden uns innerhalb von 24 Stunden mit deinem Kick-off-Termin.';
         })
         .catch(function () {
-          msg.style.color = '#ff7a93';
-          msg.textContent = 'Senden fehlgeschlagen. Bitte versuche es erneut oder schreib an fh@digital-growth.marketing.';
+          msg.style.color = '#C0362C';
+          msg.textContent = 'Senden fehlgeschlagen. Bitte versuche es in einem Moment erneut.';
         });
     });
   }
